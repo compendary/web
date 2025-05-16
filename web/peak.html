@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script async type="text/javascript" src="https://www.peakfinder.com/script/peakfinder.1.0.min.js"></script>
+  </head>
+  <body>
+    <div class="content">
+  <canvas id="pfcanvas" oncontextmenu="event.preventDefault()"> </canvas>
+
+  <!-- you can also add an optional div that will be hidden when the PeakFinder modele has been loaded -->
+  <div id="pfcanvasprogress">
+    <div class="spinner" id="spinner">
+    </div>
+  </div>
+</div>
+
+    <script>
+      
+if (PeakFinder.utils.caniuse()) {
+
+  let panel = new PeakFinder.PanoramaPanel({
+    canvasid: 'pfcanvas', 
+    locale: 'en' // attach to canvas
+  }) 
+  
+  panel.init(function() {
+    // inside here its save to use the panel
+    
+    panel.settings.distanceUnit(1) // use imperial (miles, feet) format
+            
+    panel.loadViewpoint(46.53722, 8.12610, 'Finsteraarhorn') // loads a viewpoint
+
+    // animate to view
+    panel.azimut(209.0, 2.0)
+    panel.altitude(1.0, 1.0)
+    panel.fieldofview(45.0, 2.0)
+  });
+}
+    </script>
+  </body>
+</html>
